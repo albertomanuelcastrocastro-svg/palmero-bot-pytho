@@ -43,9 +43,9 @@
     "stop": 1.1385,
     "tp1": 1.1525,
     "tp2": 1.155,
-    "tp1_alcanzado": null,
-    "tp2_alcanzado": null,
-    "tp3_resultado": null,
-    "resultado_pct": null
+    "tp1_alcanzado": true,
+    "tp2_alcanzado": true,
+    "tp3_resultado": 1.158,
+    "resultado_pct": 0.997
   }
 ]
