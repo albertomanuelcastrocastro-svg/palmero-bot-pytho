@@ -1,0 +1,159 @@
+//@version=5
+// © El Palmero — PALMERO 15 v8 (regla de hierro: solo a favor del 4H + isconfirmed)
+// Calibrado con datos reales 5-9 jun 2026: 75% favorables, +0.75% / -0.30%
+// LONG  solo si 4H sube. SHORT solo si 4H baja. 4H plano = fuera del mercado.
+// v8: añade barstate.isconfirmed en las alertas para evitar envíos a mitad de vela.
+indicator("PALMERO 15", overlay=true, max_labels_count=200)
+
+// ============================================================
+// INPUTS
+// ============================================================
+grp_m = "📊 MACD"
+macd_fast = input.int(12, "Rápida", group=grp_m)
+macd_slow = input.int(26, "Lenta",  group=grp_m)
+macd_sig  = input.int(9,  "Señal",  group=grp_m)
+
+grp_t = "📈 TENDENCIA 4H (regla maestra)"
+fuerza_4h_min = input.float(0.2, "Margen del 4H respecto a su media",
+   minval=0.0, maxval=2.0, step=0.05, group=grp_t,
+   tooltip="Filtra laterales: 4H debe estar al menos X veces su media en la dirección correcta. Subir = más exigente, menos señales")
+
+grp_v = "📦 VOLUMEN"
+vol_mult = input.float(1.3, "Volumen mínimo (x media)", minval=1.0, maxval=5.0, step=0.1, group=grp_v)
+
+grp_g = "⏱️ ANTI-SPAM"
+gap_min = input.int(30, "Mín. velas entre señales", minval=5, maxval=180, group=grp_g)
+
+grp_vis = "🎨 VISUAL"
+show_panel = input.bool(true, "Mostrar panel", group=grp_vis)
+show_sigs  = input.bool(true, "Mostrar señales", group=grp_vis)
+show_zonas = input.bool(true, "Sombrear zonas de caza", group=grp_vis)
+
+// ============================================================
+// MACD 1M
+// ============================================================
+[macd_1m, sig_1m, hist_1m] = ta.macd(close, macd_fast, macd_slow, macd_sig)
+cruce_bull = ta.crossover(macd_1m,  sig_1m)
+cruce_bear = ta.crossunder(macd_1m, sig_1m)
+
+// ============================================================
+// 4H / 15M / 5M
+// ============================================================
+f_pack() =>
+    [_m, s, _h] = ta.macd(close, 12, 26, 9)
+    [s, s[1], ta.sma(math.abs(s), 50)]
+
+[sig4h, sig4h_p, umb4h] = request.security(syminfo.tickerid, "240", f_pack(), lookahead=barmerge.lookahead_off)
+[sig15, sig15_p, umb15] = request.security(syminfo.tickerid, "15",  f_pack(), lookahead=barmerge.lookahead_off)
+[sig5,  sig5_p,  umb5]  = request.security(syminfo.tickerid, "5",   f_pack(), lookahead=barmerge.lookahead_off)
+
+arr4h_up = sig4h > sig4h_p
+arr4h_dn = sig4h < sig4h_p
+arr15_up = sig15 > sig15_p
+arr15_dn = sig15 < sig15_p
+arr5_up  = sig5  > sig5_p
+arr5_dn  = sig5  < sig5_p
+
+// ============================================================
+// REGLA DE HIERRO: el 4H manda, sin excepciones
+// ============================================================
+margen = umb4h * fuerza_4h_min
+tend_up = arr4h_up and sig4h > -margen
+tend_dn = arr4h_dn and sig4h <  margen
+lateral = not tend_up and not tend_dn
+
+// ============================================================
+// VOLUMEN
+// ============================================================
+vol_ma  = ta.sma(volume, 20)
+vol_ok  = volume >= vol_ma * vol_mult
+
+// ============================================================
+// GO — A FAVOR DEL 4H, SIEMPRE
+// ============================================================
+go_long_raw  = tend_up and cruce_bull and arr5_up and vol_ok
+go_short_raw = tend_dn and cruce_bear and arr5_dn and vol_ok
+
+var int last_bar = -9999
+go_long  = go_long_raw  and (bar_index - last_bar >= gap_min)
+go_short = go_short_raw and (bar_index - last_bar >= gap_min)
+if go_long or go_short
+    last_bar := bar_index
+
+go_l_new = go_long  and not go_long[1]
+go_s_new = go_short and not go_short[1]
+
+// ============================================================
+// VISUALES
+// ============================================================
+plotshape(show_sigs and go_long,  location=location.belowbar, style=shape.triangleup,   size=size.normal, color=color.lime, text="GO", textcolor=color.black, title="GO LONG")
+plotshape(show_sigs and go_short, location=location.abovebar, style=shape.triangledown, size=size.normal, color=color.red,  text="GO", textcolor=color.black, title="GO SHORT")
+
+zona_l = tend_up and arr5_up
+zona_s = tend_dn and arr5_dn
+bgcolor(show_zonas and zona_l ? color.new(color.green, 88) : show_zonas and zona_s ? color.new(color.red, 88) : show_zonas and lateral ? color.new(color.gray, 95) : na, title="Zona")
+
+// ============================================================
+// PANEL
+// ============================================================
+f_arr(up, dn) => up ? "↑" : dn ? "↓" : "→"
+f_col(up, dn) => up ? color.lime : dn ? color.red : color.yellow
+
+if show_panel
+    var table t = table.new(position.top_left, 3, 8, bgcolor=color.new(color.black,15), border_width=1, border_color=color.new(color.gray,60), frame_width=1, frame_color=color.gray)
+
+    table.cell(t, 0, 0, "PALMERO 15", text_color=color.white,  text_size=size.tiny, bgcolor=color.new(color.navy,20))
+    table.cell(t, 1, 0, "VALOR",      text_color=color.silver, text_size=size.tiny, bgcolor=color.new(color.navy,20))
+    table.cell(t, 2, 0, "DIR",        text_color=color.silver, text_size=size.tiny, bgcolor=color.new(color.navy,20))
+
+    bg4  = sig4h > 0 ? color.new(color.green,75) : color.new(color.red,75)
+    bg15 = sig15 > 0 ? color.new(color.green,75) : color.new(color.red,75)
+    bg5  = sig5  > 0 ? color.new(color.green,75) : color.new(color.red,75)
+
+    table.cell(t, 0, 1, "4H",  text_color=color.white, text_size=size.tiny, bgcolor=bg4)
+    table.cell(t, 1, 1, str.tostring(sig4h, "#.#####"), text_color=f_col(arr4h_up, arr4h_dn), text_size=size.tiny,   bgcolor=bg4)
+    table.cell(t, 2, 1, f_arr(arr4h_up, arr4h_dn),      text_color=f_col(arr4h_up, arr4h_dn), text_size=size.normal, bgcolor=bg4)
+
+    modo_txt = tend_up ? "▲ SOLO LONG" : tend_dn ? "▼ SOLO SHORT" : "— FUERA —"
+    modo_col = tend_up ? color.lime : tend_dn ? color.red : color.gray
+    modo_bg  = tend_up ? color.new(color.green,60) : tend_dn ? color.new(color.red,60) : color.new(color.gray,80)
+    table.cell(t, 0, 2, "MODO",   text_color=color.white, text_size=size.tiny, bgcolor=modo_bg)
+    table.cell(t, 1, 2, modo_txt, text_color=modo_col,    text_size=size.tiny, bgcolor=modo_bg)
+    table.cell(t, 2, 2, "",       text_color=color.gray,  text_size=size.tiny, bgcolor=modo_bg)
+
+    table.cell(t, 0, 3, "15M", text_color=color.white, text_size=size.tiny, bgcolor=bg15)
+    table.cell(t, 1, 3, str.tostring(sig15, "#.#####"), text_color=f_col(arr15_up, arr15_dn), text_size=size.tiny,   bgcolor=bg15)
+    table.cell(t, 2, 3, f_arr(arr15_up, arr15_dn),      text_color=f_col(arr15_up, arr15_dn), text_size=size.normal, bgcolor=bg15)
+
+    table.cell(t, 0, 4, "5M",  text_color=color.white, text_size=size.tiny, bgcolor=bg5)
+    table.cell(t, 1, 4, str.tostring(sig5, "#.#####"),  text_color=f_col(arr5_up, arr5_dn),  text_size=size.tiny,   bgcolor=bg5)
+    table.cell(t, 2, 4, f_arr(arr5_up, arr5_dn),        text_color=f_col(arr5_up, arr5_dn),  text_size=size.normal, bgcolor=bg5)
+
+    cruce_txt = cruce_bull ? "▲ CRUCE" : cruce_bear ? "▼ CRUCE" : "—"
+    cruce_col = cruce_bull ? color.lime : cruce_bear ? color.red : color.gray
+    table.cell(t, 0, 5, "1M",      text_color=color.white, text_size=size.tiny)
+    table.cell(t, 1, 5, cruce_txt, text_color=cruce_col,   text_size=size.tiny)
+    table.cell(t, 2, 5, "",        text_color=color.gray,  text_size=size.tiny)
+
+    vol_txt = str.tostring(math.round(volume / vol_ma * 100) / 100) + "x"
+    table.cell(t, 0, 6, "VOL",   text_color=color.white, text_size=size.tiny)
+    table.cell(t, 1, 6, vol_txt, text_color=vol_ok ? color.lime : color.yellow, text_size=size.tiny)
+    table.cell(t, 2, 6, vol_ok ? "✓" : "bajo", text_color=vol_ok ? color.lime : color.red, text_size=size.tiny)
+
+    go_txt = go_long ? "▲ GO LONG" : go_short ? "▼ GO SHORT" : "—"
+    go_col = go_long ? color.lime : go_short ? color.red : color.gray
+    go_bg  = go_long ? color.new(color.lime,40) : go_short ? color.new(color.red,40) : color.new(color.black,50)
+    table.cell(t, 0, 7, "GO",   text_color=color.white, text_size=size.tiny, bgcolor=go_bg)
+    table.cell(t, 1, 7, go_txt, text_color=go_col,      text_size=size.tiny, bgcolor=go_bg)
+    table.cell(t, 2, 7, "",     text_color=color.white,  text_size=size.tiny, bgcolor=go_bg)
+
+// ============================================================
+// ALERTAS — v8: solo en cierre de vela confirmado
+// ============================================================
+if go_l_new and barstate.isconfirmed
+    alert(syminfo.ticker + "|P15_LONG|"  + str.tostring(close) + "|" + timeframe.period + "|VOL:" + str.tostring(volume,"#") + "|4H:" + str.tostring(sig4h,"#.####") + "|15M:" + str.tostring(sig15,"#.####"), alert.freq_once_per_bar_close)
+if go_s_new and barstate.isconfirmed
+    alert(syminfo.ticker + "|P15_SHORT|" + str.tostring(close) + "|" + timeframe.period + "|VOL:" + str.tostring(volume,"#") + "|4H:" + str.tostring(sig4h,"#.####") + "|15M:" + str.tostring(sig15,"#.####"), alert.freq_once_per_bar_close)
+
+alertcondition(go_long,  "▲ GO LONG",  "Largo a favor del 4H")
+alertcondition(go_short, "▼ GO SHORT", "Corto a favor del 4H")
