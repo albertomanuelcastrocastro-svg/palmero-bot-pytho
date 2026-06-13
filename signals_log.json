@@ -1,15 +1,1 @@
-[
-  {
-    "id": 1,
-    "timestamp": "2026-06-13T10:44:04.843Z",
-    "simbolo": "SOLUSDT",
-    "tipo": "GO LONG",
-    "precio": "67.5",
-    "tf": "1",
-    "vol": "VOL:812",
-    "sig4h": "4H:0.1764",
-    "sig15m": "15M:0.1182",
-    "decision": "entre",
-    "decisionTime": "2026-06-13T10:44:06.275Z"
-  }
-]
+[{"id":1,"timestamp":"2026-06-13T10:44:04.843Z","simbolo":"SOLUSDT","tipo":"GO LONG","precio":"67.5","tf":"1","vol":"VOL:812","sig4h":"4H:0.1764","sig15m":"15M:0.1182","decision":null,"decisionTime":null}]
