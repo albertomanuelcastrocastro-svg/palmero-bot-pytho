@@ -44,7 +44,7 @@ Al cerrar, Alberto dice qué tramos tocó → Claude calcula resultado_pct y lo 
 ## Cabecera para pestaña "Diario" en Google Sheet
 Sheet: https://docs.google.com/spreadsheets/d/1PaofGeNW9SQtRShnMFpwkbEm06DRxSsmlniZsiPpG6k/edit
 ```
-Fecha	Hora entrada	Par	Dirección	TF	Entrada	Stop	TP1	TP2	Hito	Confirmación	Estado	TP1✓	TP2✓	Cierre final	Resultado %	Notas
+Fecha	Hora entrada	Par	Dirección	TF	Entrada	Stop	TP1	TP2	Hito	Confirmación	Estado emocional	TP1✓	TP2✓	Cierre final	Resultado %	Estado operación	Notas
 ```
 Claude pasa una fila lista para pegar cuando la operación se liquida.
 
@@ -55,3 +55,14 @@ Claude pasa una fila lista para pegar cuando la operación se liquida.
 - Confluencia cruzada: si XRP y SOL (correlacionados) disparan señal casi a la vez,
   es indicio de movimiento de fondo del mercado → refuerza la señal.
 - GITHUB_TOKEN (palmero-bot) tiene scope "repo" sobre este repositorio.
+
+
+## Operaciones simultáneas
+El sistema soporta múltiples operaciones abiertas a la vez (cada una con su propio id en signals_log.json),
+incluyendo tramos TP3 "caballo ganador" de días anteriores corriendo en paralelo con operaciones nuevas.
+Campo `estado_operacion`: "abierta" (TP3 corriendo) | "cerrada" (liquidada del todo).
+
+## REGLA PARA CLAUDE
+Las plantillas (entrada de operación, corrección, cabecera Excel) deben estar SIEMPRE
+disponibles en este README. Si se modifican, actualizar este archivo inmediatamente
+sin que Alberto tenga que pedirlo. No preguntar dónde guardar esto: aquí, siempre.
