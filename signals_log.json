@@ -24,28 +24,5 @@
     "sig15m": "15M:0.1182",
     "decision": "no_entre",
     "decisionTime": "2026-06-13T11:00:30.403Z"
-  },
-  {
-    "id": "manual-1",
-    "manual": true,
-    "timestamp": "2026-06-13T13:02:00.000Z",
-    "simbolo": "XRPUSDC",
-    "tipo": "GO LONG",
-    "precio_senal": null,
-    "tf": null,
-    "decision": "entre",
-    "precio_real_entrada": 1.1435,
-    "hora_real_entrada": "13:02",
-    "hito": "soporte",
-    "confirmacion_tf": "15m",
-    "estado_entrada": "dudoso",
-    "notas": "hay confluencia con BISI de 4h",
-    "stop": 1.1385,
-    "tp1": 1.1525,
-    "tp2": 1.155,
-    "tp1_alcanzado": true,
-    "tp2_alcanzado": true,
-    "tp3_resultado": 1.158,
-    "resultado_pct": 0.997
   }
 ]
