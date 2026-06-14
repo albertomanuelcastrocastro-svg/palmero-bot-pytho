@@ -35,8 +35,8 @@
     "vol": "VOL:38392",
     "sig4h": "4H:0.0021",
     "sig15m": "15M:-0.0018",
-    "decision": null,
-    "decisionTime": null
+    "decision": "no_entre",
+    "decisionTime": "2026-06-14T21:23:41.924Z"
   },
   {
     "id": 21,
