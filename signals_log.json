@@ -1,5 +1,18 @@
 [
   {
+    "id": 17,
+    "timestamp": "2026-06-14T13:50:07.129Z",
+    "simbolo": "SOLUSDT",
+    "tipo": "GO LONG",
+    "precio": "67.69",
+    "tf": "5",
+    "vol": "VOL:7240",
+    "sig4h": "4H:0.5647",
+    "sig15m": "15M:-0.1339",
+    "decision": null,
+    "decisionTime": null
+  },
+  {
     "id": 16,
     "timestamp": "2026-06-14T08:10:02.404Z",
     "simbolo": "XRPUSDT",
