@@ -308,5 +308,15 @@
     "umbral": 0.25,
     "direccion_4h": "bajista",
     "logged_at": "2026-06-24T19:58:43.833470+00:00"
+  },
+  {
+    "timestamp": "2026-06-23T16:30:00+00:00",
+    "symbol": "SOLUSDT",
+    "tf": "15m",
+    "tipo": "SHORT",
+    "precio": 69.02,
+    "umbral": 0.25,
+    "direccion_4h": "bajista",
+    "logged_at": "2026-06-24T20:30:49.328555+00:00"
   }
 ]
