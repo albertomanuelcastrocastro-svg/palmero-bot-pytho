@@ -1,5 +1,18 @@
 [
   {
+    "id": 141,
+    "timestamp": "2026-06-24T16:00:28.321Z",
+    "simbolo": "SOLUSDT",
+    "tipo": "P15_SHORT",
+    "precio": "67.33",
+    "tf": "60",
+    "vol": "VOL:178449",
+    "sig4h": "4H:-0.4338",
+    "sig15m": "15M:-0.2121",
+    "decision": null,
+    "decisionTime": null
+  },
+  {
     "id": 140,
     "timestamp": "2026-06-24T15:03:04.619Z",
     "simbolo": "XRPUSDT",
