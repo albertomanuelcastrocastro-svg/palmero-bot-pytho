@@ -368,5 +368,25 @@
     "umbral": 0.25,
     "direccion_4h": "alcista",
     "logged_at": "2026-06-25T09:13:03.715304+00:00"
+  },
+  {
+    "timestamp": "2026-06-25T08:45:00+00:00",
+    "symbol": "XRPUSDT",
+    "tf": "15m",
+    "tipo": "LONG",
+    "precio": 1.083,
+    "umbral": 0.25,
+    "direccion_4h": "alcista",
+    "logged_at": "2026-06-25T09:30:47.669411+00:00"
+  },
+  {
+    "timestamp": "2026-06-25T09:15:00+00:00",
+    "symbol": "SOLUSDT",
+    "tf": "15m",
+    "tipo": "LONG",
+    "precio": 68.96,
+    "umbral": 0.25,
+    "direccion_4h": "alcista",
+    "logged_at": "2026-06-25T09:30:48.806294+00:00"
   }
 ]
