@@ -444,5 +444,83 @@
     "dist_umbral": 0.15,
     "direccion_4h": "bajista",
     "logged_at": "2026-06-25T13:47:28.079796+00:00"
+  },
+  {
+    "timestamp": "2026-06-22T14:00:00+00:00",
+    "symbol": "XRPUSDT",
+    "tf": "15m",
+    "tipo": "SHORT",
+    "precio": 1.1552,
+    "macd_pct": 0.5222,
+    "dist_pct": 0.1574,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "desconocida",
+    "logged_at": "2026-06-25T14:29:09.799191+00:00"
+  },
+  {
+    "timestamp": "2026-06-24T16:15:00+00:00",
+    "symbol": "XRPUSDT",
+    "tf": "15m",
+    "tipo": "LONG",
+    "precio": 1.066,
+    "macd_pct": 0.785,
+    "dist_pct": 0.1593,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "desconocida",
+    "logged_at": "2026-06-25T14:29:09.799198+00:00"
+  },
+  {
+    "timestamp": "2026-06-20T23:15:00+00:00",
+    "symbol": "SOLUSDT",
+    "tf": "15m",
+    "tipo": "SHORT",
+    "precio": 73.34,
+    "macd_pct": 0.6928,
+    "dist_pct": 0.2274,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "desconocida",
+    "logged_at": "2026-06-25T14:29:10.370907+00:00"
+  },
+  {
+    "timestamp": "2026-06-23T07:00:00+00:00",
+    "symbol": "SOLUSDT",
+    "tf": "15m",
+    "tipo": "LONG",
+    "precio": 70.51,
+    "macd_pct": 0.6584,
+    "dist_pct": 0.1953,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "desconocida",
+    "logged_at": "2026-06-25T14:29:10.370911+00:00"
+  },
+  {
+    "timestamp": "2026-06-23T09:15:00+00:00",
+    "symbol": "SOLUSDT",
+    "tf": "15m",
+    "tipo": "LONG",
+    "precio": 68.98,
+    "macd_pct": 1.1475,
+    "dist_pct": 0.2286,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "desconocida",
+    "logged_at": "2026-06-25T14:29:10.370912+00:00"
+  },
+  {
+    "timestamp": "2026-06-24T18:15:00+00:00",
+    "symbol": "SOLUSDT",
+    "tf": "15m",
+    "tipo": "LONG",
+    "precio": 66.2,
+    "macd_pct": 1.5039,
+    "dist_pct": 0.4167,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "desconocida",
+    "logged_at": "2026-06-25T14:29:10.370914+00:00"
   }
 ]
