@@ -418,5 +418,31 @@
     "umbral": 0.25,
     "direccion_4h": "alcista",
     "logged_at": "2026-06-25T12:54:18.263007+00:00"
+  },
+  {
+    "timestamp": "2026-06-21T22:45:00+00:00",
+    "symbol": "SOLUSDT",
+    "tf": "15m",
+    "tipo": "LONG",
+    "precio": 73.06,
+    "macd_pct": 0.3927,
+    "dist_pct": 0.1654,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "alcista",
+    "logged_at": "2026-06-25T13:47:28.079788+00:00"
+  },
+  {
+    "timestamp": "2026-06-25T07:15:00+00:00",
+    "symbol": "SOLUSDT",
+    "tf": "15m",
+    "tipo": "SHORT",
+    "precio": 69.36,
+    "macd_pct": 0.6617,
+    "dist_pct": 0.1584,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "bajista",
+    "logged_at": "2026-06-25T13:47:28.079796+00:00"
   }
 ]
