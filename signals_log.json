@@ -1,5 +1,18 @@
 [
   {
+    "id": 161,
+    "timestamp": "2026-06-26T01:30:08.717Z",
+    "simbolo": "SOLUSDT",
+    "tipo": "P15_SHORT",
+    "precio": "67.21",
+    "tf": "15",
+    "vol": "VOL:52222",
+    "sig4h": "4H:-1.0386",
+    "sig15m": "15M:0.268",
+    "decision": null,
+    "decisionTime": null
+  },
+  {
     "id": 160,
     "timestamp": "2026-06-26T01:00:13.847Z",
     "simbolo": "SOLUSDT PCELER SHORT 67.74",
