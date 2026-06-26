@@ -1,5 +1,18 @@
 [
   {
+    "id": 163,
+    "timestamp": "2026-06-26T08:15:07.841Z",
+    "simbolo": "XRPUSDT PCELER SHORT 1.0413",
+    "tipo": "?",
+    "precio": "?",
+    "tf": "?",
+    "vol": "",
+    "sig4h": "",
+    "sig15m": "",
+    "decision": null,
+    "decisionTime": null
+  },
+  {
     "id": 162,
     "timestamp": "2026-06-26T03:00:17.670Z",
     "simbolo": "XRPUSDT",
