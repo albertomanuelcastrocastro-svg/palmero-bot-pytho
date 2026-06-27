@@ -1,5 +1,18 @@
 [
   {
+    "id": 164,
+    "timestamp": "2026-06-27T21:00:06.323Z",
+    "simbolo": "SOLUSDT",
+    "tipo": "LONG",
+    "precio": "71.3",
+    "tf": "15",
+    "vol": "",
+    "sig4h": "",
+    "sig15m": "",
+    "decision": null,
+    "decisionTime": null
+  },
+  {
     "id": 163,
     "timestamp": "2026-06-26T08:15:07.841Z",
     "simbolo": "XRPUSDT PCELER SHORT 1.0413",
