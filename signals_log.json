@@ -1,5 +1,18 @@
 [
   {
+    "id": 168,
+    "timestamp": "2026-07-01T09:30:09.022Z",
+    "simbolo": "SOLUSDT",
+    "tipo": "P15_LONG",
+    "precio": "75.17",
+    "tf": "15",
+    "vol": "VOL:54582",
+    "sig4h": "4H:0.9061",
+    "sig15m": "15M:0.1462",
+    "decision": null,
+    "decisionTime": null
+  },
+  {
     "id": 167,
     "timestamp": "2026-06-30T14:15:11.674Z",
     "simbolo": "SOLUSDT",
