@@ -1,5 +1,18 @@
 [
   {
+    "id": 170,
+    "timestamp": "2026-07-02T01:15:07.708Z",
+    "simbolo": "XRPUSDT",
+    "tipo": "LONG",
+    "precio": "1.0512",
+    "tf": "15",
+    "vol": "",
+    "sig4h": "",
+    "sig15m": "",
+    "decision": null,
+    "decisionTime": null
+  },
+  {
     "id": 169,
     "timestamp": "2026-07-01T21:45:06.851Z",
     "simbolo": "SOLUSDT",
