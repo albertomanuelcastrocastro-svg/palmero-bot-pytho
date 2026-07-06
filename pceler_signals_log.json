@@ -652,5 +652,18 @@
     "dist_umbral": 0.15,
     "direccion_4h": "bajista",
     "logged_at": "2026-07-06T17:36:28.031743+00:00"
+  },
+  {
+    "timestamp": "2026-07-06T17:45:00+00:00",
+    "symbol": "XRPUSDT",
+    "tf": "15m",
+    "tipo": "SHORT",
+    "precio": 1.1489,
+    "macd_pct": 0.514,
+    "dist_pct": 0.2764,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "bajista",
+    "logged_at": "2026-07-06T17:52:30.551542+00:00"
   }
 ]
