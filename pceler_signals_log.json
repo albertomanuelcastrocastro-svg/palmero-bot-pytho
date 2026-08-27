@@ -990,5 +990,31 @@
     "dist_umbral": 0.15,
     "direccion_4h": "bajista",
     "logged_at": "2026-08-26T23:11:05.496745+00:00"
+  },
+  {
+    "timestamp": "2026-08-27T00:00:00+00:00",
+    "symbol": "XRPUSDT",
+    "tf": "15m",
+    "tipo": "SHORT",
+    "precio": 1.4124,
+    "macd_pct": 0.5778,
+    "dist_pct": 0.2495,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "bajista",
+    "logged_at": "2026-08-27T00:15:15.763093+00:00"
+  },
+  {
+    "timestamp": "2026-08-27T00:15:00+00:00",
+    "symbol": "SOLUSDT",
+    "tf": "15m",
+    "tipo": "SHORT",
+    "precio": 101.17,
+    "macd_pct": 1.2285,
+    "dist_pct": 0.3259,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "bajista",
+    "logged_at": "2026-08-27T00:15:16.920113+00:00"
   }
 ]
