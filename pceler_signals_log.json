@@ -1406,5 +1406,18 @@
     "dist_umbral": 0.15,
     "direccion_4h": "bajista",
     "logged_at": "2026-09-20T23:51:38.143911+00:00"
+  },
+  {
+    "timestamp": "2026-09-21T01:15:00+00:00",
+    "symbol": "SOLUSDT",
+    "tf": "15m",
+    "tipo": "SHORT",
+    "precio": 112.15,
+    "macd_pct": 0.6459,
+    "dist_pct": 0.1615,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "bajista",
+    "logged_at": "2026-09-21T01:27:49.599208+00:00"
   }
 ]
