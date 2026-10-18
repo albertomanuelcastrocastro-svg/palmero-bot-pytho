@@ -1718,5 +1718,18 @@
     "dist_umbral": 0.15,
     "direccion_4h": "alcista",
     "logged_at": "2026-10-16T17:41:30.963984+00:00"
+  },
+  {
+    "timestamp": "2026-10-18T15:45:00+00:00",
+    "symbol": "SOLUSDT",
+    "tf": "15m",
+    "tipo": "LONG",
+    "precio": 102.18,
+    "macd_pct": 0.4625,
+    "dist_pct": 0.1581,
+    "elong_umbral": 0.25,
+    "dist_umbral": 0.15,
+    "direccion_4h": "alcista",
+    "logged_at": "2026-10-18T15:54:59.959577+00:00"
   }
 ]
